@@ -1,0 +1,146 @@
+КОД БАЗЫ ДАННЫХ
+
+
+
+
+
+CREATE TABLE Book (
+    book_id INT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    author VARCHAR(100) NOT NULL,
+    ISBN VARCHAR(13) NOT NULL,
+    genre VARCHAR(50),
+    quantity_available INT NOT NULL
+);
+CREATE TABLE Customer (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(15) NOT NULL,
+    address VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    order_date DATE NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
+);
+
+CREATE TABLE Order_Item (
+    order_item_id INT PRIMARY KEY,
+    order_id INT NOT NULL,
+    book_id INT NOT NULL,
+    quantity INT NOT NULL,
+    price_per_unit DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (book_id) REFERENCES Book(book_id)
+);
+
+INSERT INTO Book (book_id, title, author, ISBN, genre, quantity_available)
+VALUES
+    (1, 'The Great Gatsby', 'F. Scott Fitzgerald', '9780743273565', 'Classic Fiction', 15),
+    (2, 'To Kill a Mockingbird', 'Harper Lee', '9780061120084', 'Classic Fiction', 10),
+    (3, '1984', 'George Orwell', '9780451524935', 'Dystopian Fiction', 20),
+    (4, 'Pride and Prejudice', 'Jane Austen', '9780141439518', 'Romance', 12),
+    (5, 'The Hobbit', 'J.R.R. Tolkien', '9780345339683', 'Fantasy', 8),
+    (6, 'The Da Vinci Code', 'Dan Brown', '9780307474278', 'Thriller', 18),
+    (7, 'The Catcher in the Rye', 'J.D. Salinger', '9780316769174', 'Coming-of-age Fiction', 14);
+
+INSERT INTO Book (book_id, title, author, ISBN, genre, quantity_available)
+VALUES
+    (8, 'Almas kylysh',  'Ilyas Esenberlin', '9780307588343', 'historical', 35 ),
+    (9, 'The Lord of the Rings: The Fellowship of the Ring', 'J.R.R. Tolkien', '9780345339706', 'Fantasy', 20),
+    (10, 'The Hunger Games', 'Suzanne Collins', '9780439023481', 'Young Adult', 15),
+    (11, 'To All the Boys I Loved Before',  'Jenny Han', '9781442426702', 'Romance', 10),
+    (12, 'The Alchemist', 'Paulo Coelho', '9780061122415', 'Philosophical Fiction', 30),
+    (13, 'The Martian', 'Andy Weir', '9780553418026', 'Science Fiction', 25),
+    (14, 'Gone Girl', 'Gillian Flynn', '9780307588364', 'Mystery', 12),
+    (15, 'The Girl with the Dragon Tattoo', 'Stieg Larsson', '9780307454546', 'Crime Fiction', 18),
+    (16, 'Dune', 'Frank Herbert', '9780441013593', 'Science Fiction', 22),
+    (17, 'The Chronicles of Narnia: The Lion, the Witch, and the Wardrobe', 'C.S. Lewis', '9780064404990', 'Fantasy', 16),
+    (18, 'The Shining', 'Stephen King', '9780307743657', 'Horror', 10),
+    (19, 'The Handmaid Tale' , 'Margaret Atwood', '9780385490818', 'Dystopian Fiction', 20),
+    (20, 'The Fault in Our Stars', 'John Green', '9780525478812', 'Young Adult', 14),
+    (21, 'Brave New World', 'Aldous Huxley', '9780060850524', 'Dystopian Fiction', 25),
+    (22, 'The Road', 'Cormac McCarthy', '9780307387899', 'Post-apocalyptic Fiction', 8),
+    (23, 'Fahrenheit 451', 'Ray Bradbury', '9781451673319', 'Dystopian Fiction', 16),
+    (24, 'The Girl on the Train', 'Paula Hawkins', '9781594634024', 'Mystery', 22),
+    (25, 'The Book Thief', 'Markus Zusak', '9780375842207', 'Historical Fiction', 15),
+    (26, 'The Count of Monte Cristo', 'Alexandre Dumas', '9780140449266', 'Adventure', 18),
+    (27, 'Frankenstein', 'Mary Shelley', '9780141439471', 'Gothic Fiction', 10),
+    (28, 'The Picture of Dorian Gray', 'Oscar Wilde', '9780486278070', 'Gothic Fiction', 20),
+    (29, 'Jane Eyre', 'Charlotte Bronte', '9780141441146', 'Gothic Fiction', 14),
+    (30, 'The Adventures of Tom Sawyer', 'Mark Twain', '9780143039563', 'Adventure', 25),
+    (31, 'Moby-Dick', 'Herman Melville', '9780143124672', 'Adventure', 12),
+    (32, 'The Odyssey', 'Homer', '9780140268867', 'Epic Poetry', 16),
+    (33, 'One Hundred Years of Solitude', 'Gabriel Garcia Marquez', '9780060883287', 'Magical Realism', 10),
+    (34, 'The Scarlet Letter', 'Nathaniel Hawthorne', '9780486280486', 'Historical Fiction', 20),
+    (35, 'Animal Farm', 'George Orwell', '9780451526342', 'Satire', 18
+),
+    (36, 'Little Women', 'Louisa May Alcott', '9780147514011', 'Classics', 15),
+    (37, 'The Catcher in the Rye', 'J.D. Salinger', '9780241950432', 'Coming-of-age Fiction', 22),
+    (38, 'Lord of the Flies', 'William Golding', '9780399501487', 'Allegorical Novel', 14),
+    (39, 'Crime and Punishment', 'Fyodor Dostoevsky', '9780143107637', 'Psychological Fiction', 20),
+    (40, 'The Grapes of Wrath', 'John Steinbeck', '9780143039433', 'Historical Fiction', 12),
+    (41, 'The Adventures of Huckleberry Finn', 'Mark Twain', '9780486280615', 'Adventure', 15),
+    (42, 'A Game of Thrones', 'George R.R. Martin', '9780553573404', 'Fantasy', 16),
+    (43, 'The Help', 'Kathryn Stockett', '9780399155345', 'Historical Fiction', 18),
+    (44, 'The Name of the Wind', 'Patrick Rothfuss', '9780756404741', 'Fantasy', 20),
+    (45, 'Gulliver Travels' , 'Jonathan Swift', '9780141439495', 'Satire', 14),
+    (46, 'The Book of Dust: La Belle Sauvage', 'Philip Pullman', '9780375815300', 'Fantasy', 10),
+    (47, 'The Stand', 'Stephen King', '9780307743688', 'Horror', 15),
+    (48, 'The Lord of the Rings: The Two Towers', 'J.R.R. Tolkien', '9780345339713', 'Fantasy', 18),
+    (49, 'Slaughterhouse-Five', 'Kurt Vonnegut', '9780385333849', 'Science Fiction', 22),
+    (50, 'The Complete Maus', 'Art Spiegelman', '9780679406419', 'Graphic Novel', 25),
+    (51, 'The Color Purple', 'Alice Walker', '9780156028356', 'Historical Fiction', 12),
+    (52, 'A Tale of Two Cities', 'Charles Dickens', '9780141439600', 'Historical Fiction', 16),
+    (53, 'The Night Circus', 'Erin Morgenstern', '9780307744432', 'Fantasy', 10),
+    (54, 'The Brothers Karamazov', 'Fyodor Dostoevsky', '9780374528379', 'Philosophical Fiction', 20),
+    (55, 'The Secret History', 'Donna Tartt', '9781400031702', 'Mystery', 18),
+    (56, 'Beloved', 'Toni Morrison', '9781400033416', 'Historical Fiction', 14),
+    (57, 'The Secret Garden', 'Frances Hodgson Burnett', '9780064401883', 'Children\ Literature', 22),
+    (58, 'The Kite Runner', 'Khaled Hosseini', '9781594631931', 'Historical Fiction', 25),
+    (59, 'The Divine Comedy', 'Dante Alighieri', '9780451208637', 'Epic Poetry', 12),
+    (60, 'The Road Less Traveled', 'M. Scott Peck', '9780671250676', 'Psychology', 20),
+    (61, 'The War of the Worlds', 'H.G. Wells', '9780553213386', 'Science Fiction', 15),
+    (62, 'The Silmarillion', 'J.R.R. Tolkien', '9780544338012', 'Fantasy', 10),
+    (63, 'Ender game' ,  'Orson Scott Card', '9780812550702', 'Science Fiction', 16),
+    (64, 'The Godfather', 'Mario Puzo', '9780451205766', 'Crime Fiction', 14),
+    (65, 'The Cuckoo Calling' , 'Robert Galbraith (J.K. Rowling)', '9780316206846', 'Mystery', 18),
+    (66, 'Heart of Darkness', 'Joseph Conrad', '9780486264646', 'Adventure', 20),
+    (67, 'The Adventures of Sherlock Holmes', 'Arthur Conan Doyle', '9780141034354', 'Mystery', 25),
+    (68, 'Wuthering Heights', 'Emily Bronte', '9780141439556', 'Gothic Fiction', 12),
+    (69, 'A Clash of Kings', 'George R.R. Martin', '9780553579901', 'Fantasy', 16),
+    (70, 'The Immortal Life of Henrietta Lacks', 'Rebecca Skloot', '9781400052189', 'Science', 10),
+    (71, 'The Odyssey', 'Homer', '9780143039952', 'Epic Poetry', 14),
+    (72, 'The Handmaid tale' , 'Margaret Atwood', '9780385490818', 'Dystopian Fiction', 22),
+    (73, 'The Maze Runner', 'James Dashner', '9780385737951', 'Science Fiction', 18),
+    (74, 'The Goldfinch', 'Donna Tartt', '9780316055437', 'Historical Fiction', 15),
+    (75, 'A Feast for Crows', 'George R.R. Martin', '9780553582024', 'Fantasy', 20),
+    (76, 'Dracula', 'Bram Stoker', '9780486411095', 'Gothic Fiction', 25),
+    (77, 'American Gods', 'Neil Gaiman', '9780062572110', 'Fantasy', 12),
+    (78, 'The Bell Jar', 'Sylvia Plath', '9780060837020', 'Autobiographical Fiction', 16),
+    (79, 'The Great Alone', 'Kristin Hannah', '9781250229533', 'Historical Fiction', 20),
+    (80, 'The Prince', 'Niccolo Machiavelli', '9781503280464', 'Political Philosophy', 14),
+    (81, 'The Wind-Up Bird Chronicle', 'Haruki Murakami', '9780679775430', 'Magical Realism', 10),
+    (82, 'The Power of O
+ne', 'Bryce Courtenay', '9780345410054', 'Historical Fiction', 22),
+    (83, 'The Subtle Art of Not Giving a F*ck', 'Mark Manson', '9780062457714', 'Self-help', 25),
+    (84, 'It', 'Stephen King', '9781501142970', 'Horror', 18),
+    (85, 'Outlander', 'Diana Gabaldon', '9780385319959', 'Historical Fiction', 20),
+    (86, 'The Nightingale', 'Kristin Hannah', '9780312577223', 'Historical Fiction', 12),
+    (87, 'The Girl Who Played with Fire', 'Stieg Larsson', '9780307269980', 'Crime Fiction', 15),
+    (88, 'The Hunchback of Notre-Dame', 'Victor Hugo', '9780451528582', 'Gothic Fiction', 18),
+    (89, 'The Snowman', 'Jo Nesbo', '9780307595867', 'Mystery', 14),
+    (90, 'The Master and Margarita', 'Mikhail Bulgakov', '9780679760801', 'Fantasy', 16),
+    (91, 'Norwegian Wood', 'Haruki Murakami', '9780375704024', 'Fiction', 20),
+    (92, 'The Help', 'Kathryn Stockett', '9780399155345', 'Historical Fiction', 25),
+    (93, 'A Dance with Dragons', 'George R.R. Martin', '9780553582017', 'Fantasy', 22),
+    (94, 'The Night Circus', 'Erin Morgenstern', '9780385534635', 'Fantasy', 14),
+    (95, 'American Psycho', 'Bret Easton Ellis', '9780679735779', 'Satire', 18),
+    (96, 'The Sun Also Rises', 'Ernest Hemingway', '9780743297332', 'Modernist Literature', 10),
+    (97, 'The Time Traveler Wife' , 'Audrey Niffenegger', '9781476764832', 'Science Fiction', 16),
+    (98, 'The Pillars of the Earth', 'Ken Follett', '9780451225242', 'Historical Fiction', 20),
+    (99, 'Neverwhere', 'Neil Gaiman', '9780062476371', 'Urban Fantasy', 12),
+    (100, 'The Cider House Rules', 'John Irving', '9780345417947', 'Historical Fiction', 15);
